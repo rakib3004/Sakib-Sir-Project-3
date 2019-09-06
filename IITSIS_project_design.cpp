@@ -1,6 +1,11 @@
+#include<cstdio>
+#include<iostream>
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
+using namespace std;
+
 int menu();
 int sub_menu();
 int profile();
@@ -34,8 +39,6 @@ int i;
 int main()
 
 {
-
-
     menu();
 
     return 0;
