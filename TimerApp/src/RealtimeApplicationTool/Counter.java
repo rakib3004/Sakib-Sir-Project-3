@@ -32,6 +32,60 @@ int activityCounter=0;
 
 
 
+    @Override
+    public void start(Stage primaryStage)  throws IOException{
+        String FILENAME = "history.txt";
+        File file = new File(FILENAME);
+        FileReader fr = new FileReader(file);
+        char[] arrayOfCharacter = new char[1200];
+        fr.read(arrayOfCharacter);
+
+        // reads the content to the array
+        String history1="";
+        String history2="";
+        String history3="";
+        String history4="";
+        String history5="";
+
+        int iterator;
+        int charIndex=0;
+        int wordIndex=0;
+
+        for (iterator = 0; arrayOfCharacter[iterator] != '\n'; iterator++) {
+            if (arrayOfCharacter[iterator] == '\t') {
+                // iterator++;
+                charIndex++;
+                charIndex = charIndex % 5;
+            }
+            if (arrayOfCharacter[iterator] == '\n') {
+
+                fr.close();
+
+            }
+            if (charIndex == 0) {
+
+                history1 = history1 + arrayOfCharacter[iterator];
+            } else if (charIndex == 1) {
+
+                history2 = history2 + arrayOfCharacter[iterator];
+
+            } else if (charIndex == 2) {
+                history3 = history3 + arrayOfCharacter[iterator];
+
+
+            } else if (charIndex == 3) {
+                history4 = history4 + arrayOfCharacter[iterator];
+
+            }
+            else if(charIndex ==4){
+                history5=history5+arrayOfCharacter[iterator];
+            }
+        }
+        fr.close();
+
+
+    }
+
 
     public Button setStyle(Button button) {
         button.setStyle("-fx-padding: 8 15 15 15;\n" +
