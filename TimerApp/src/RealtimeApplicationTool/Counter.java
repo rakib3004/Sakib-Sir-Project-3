@@ -84,6 +84,61 @@ int activityCounter=0;
         fr.close();
 
 
+        history1 = history1.trim();
+        history2 = history2.trim();
+        history3 = history3.trim();
+        history4 = history4.trim();
+        history5 = history5.trim();
+
+        int history1Count,history2Count,history3Count,history4Count,history5Count;
+
+        history1Count = 0;
+        history2Count = 0;
+        history3Count = 0;
+        history4Count = 0;
+        history5Count = 0;
+
+        history1Count = Integer.parseInt(history1);
+        history2Count = Integer.parseInt(history2);
+        history3Count = Integer.parseInt(history3);
+        history4Count = Integer.parseInt(history4);
+        history5Count = Integer.parseInt(history5);
+
+        System.out.println(history1+"\t"+history2+"\t"+history3+"\t"+history4+"\t"+history5);
+        TextField counterDisplay = new TextField("0");
+        setStyle(counterDisplay);
+        counterDisplay.setTranslateX(400+positionLocatorX);
+        counterDisplay.setTranslateY(500- positionLocatorY);
+        counterDisplay.setPrefSize(260,75);
+
+        Text counterText = new Text("RK Counter");
+        setStyle(counterText);
+        counterText.setTranslateX(400+positionLocatorX+25);
+        counterText.setTranslateY(500- positionLocatorY-50);
+
+
+
+        Button button = new Button("+");
+        setStyle(button);
+
+        Font font = new Font("Arial",195);
+
+        button.setFont(font);
+        button.setTranslateX(540+positionLocatorX);
+        button.setTranslateY(600- positionLocatorY);
+        button.setOnAction(actionEvent -> {
+
+            countBox++;
+            counterDisplay.setText(Integer.toString(countBox));
+
+        });
+
+
+        button.setPrefSize(116, 80);
+
+
+
+
     }
 
 
