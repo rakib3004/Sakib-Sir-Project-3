@@ -29,9 +29,6 @@ public class UserInterface extends Application {
         clock.setTranslateX(540);
         clock.setTranslateY(400);
 
-
-
-
         counter.setOnAction(actionEvent -> {
 
             Counter counter1 = new Counter();
@@ -44,6 +41,13 @@ public class UserInterface extends Application {
 
         });
         stopwatch.setOnAction(actionEvent -> {
+Stopwatch stopwatch1 = new Stopwatch();
+            try {
+
+                stopwatch1.start(primaryStage);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
 
         });
 
