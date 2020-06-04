@@ -35,6 +35,38 @@ public class Stopwatch extends Application {
     int countBox=0;
     int positionLocatorX =200;
     int activityCounter=0;
+    Text text = new Text();
+
+
+    int miliSecondCounter=0;
+    int secondCounter=0;
+    int minitueCounter=0;
+    int hourCounter=0;
+    int iterator;
+
+    public  void stopWatchStrating(){
+
+        Thread thread  = new Thread(){
+
+        };
+
+        miliSecondCounter++;
+
+        if (miliSecondCounter==100){
+            secondCounter++;
+            miliSecondCounter=0;
+        }   if (secondCounter==60){
+            minitueCounter++;
+            secondCounter=0;
+        }   if (minitueCounter==60){
+            hourCounter++;
+            minitueCounter=0;
+        }   if (hourCounter==3){
+         System.exit(0);
+        }
+        text.setText(hourCounter+" Hours : "+minitueCounter+" Minitues : "+secondCounter+" Seconds");
+
+    }
 
     Timeline time = new Timeline();
 
@@ -58,29 +90,39 @@ public class Stopwatch extends Application {
 
         });
 
-        Text counterText = new Text("RK Counter");
+        setStyle(back);
+        setStyle(exit);
+
+        back.setPrefSize(200, 80);
+        exit.setPrefSize(200, 80);
+
+        Text counterText = new Text("RK Stopwatch");
         setStyle(counterText);
         counterText.setTranslateX(400+positionLocatorX+25);
         counterText.setTranslateY(500- positionLocatorY-50);
 
+setStyle(text);
+text.setText(hourCounter+" Hours : "+minitueCounter+" Minitues : "+secondCounter+" Seconds");
+        text.setTranslateX(400+positionLocatorX);
+        text.setTranslateY(500- positionLocatorY);
 
-
-        Button button = new Button("Start");
-        setStyle(button);
+        Button start = new Button("Start");
+        setStyle(start);
 
         Font font = new Font("Arial",195);
 
-        button.setFont(font);
-        button.setTranslateX(540+positionLocatorX);
-        button.setTranslateY(600- positionLocatorY);
-        button.setOnAction(actionEvent -> {
+        start.setFont(font);
+        start.setTranslateX(540+positionLocatorX);
+        start.setTranslateY(600- positionLocatorY);
+        start.setOnAction(actionEvent -> {
 
-            countBox++;
-
+for(iterator=10;iterator>=8;iterator++){
+    stopWatchStrating();
+}
         });
 
 
-        button.setPrefSize(116, 80);
+        start.setPrefSize(116, 80);
 
 
         Button reset = new Button("Reset");
@@ -91,18 +133,13 @@ public class Stopwatch extends Application {
 
         reset.setOnAction(actionEvent -> {
 
-            activityCounter++;
-
-
-            countBox=0;
+            System.exit(0);
 
         });
 
 
         reset.setPrefSize(116, 80);
         setStyle(reset);
-
-
 
 
         PathTransition pt = new PathTransition();
@@ -140,11 +177,10 @@ public class Stopwatch extends Application {
 
         time.play();
 
-        Image image = new Image("libraryBackground8.jpg");
+        Image image = new Image("libraryBackground20.jpg");
         Canvas canvas = new Canvas(1500,950);
         Group group = new Group();
-        group.getChildren().addAll(canvas,exit,back);
-
+        group.getChildren().addAll(canvas,exit,back,reset,start,text);
         GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
         graphicsContext.drawImage(image,0,0);
 
